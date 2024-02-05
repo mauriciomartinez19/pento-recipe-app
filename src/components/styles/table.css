@@ -1,0 +1,17 @@
+#meal-table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#meal-table th, td {
+  border-bottom: 1px solid;
+  padding: 8px;
+  text-align: center;
+}
+
+#meal-table {
+  overflow-x: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
