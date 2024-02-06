@@ -1,22 +1,19 @@
 import "./styles/search-box.css";
 
 interface SearchBoxProps {
-  updateName: (name: string) => void;
-  name?: string;
+  fetchData: (name: string) => void;
 }
 
 const SearchBox = ({
-  updateName,
-  name,
+  fetchData,
 }: SearchBoxProps) => {
   return (
     <form id="search-box">
       <div className="input-group">
         <div className="search-bar-wrapper">
           <input
-            value={name}
             onChange={(e) => {
-              updateName(e.target.value);
+              fetchData(e.target.value);
             }}
             type="text"
             placeholder="Search by name"
