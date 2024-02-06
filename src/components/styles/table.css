@@ -4,9 +4,16 @@
 }
 
 #meal-table th, td {
-  border-bottom: 1px solid;
   padding: 8px;
   text-align: center;
+}
+
+#meal-table tr {
+  border-bottom: 1px solid;
+}
+
+#meal-table thead > tr {
+  border-bottom: 2px solid;
 }
 
 #meal-table {
@@ -14,4 +21,17 @@
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+#meal-table img {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+}
+
+#meal-table .name-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
 }
