@@ -1,22 +1,37 @@
+import { MappedMeal } from "../types/meals";
 import "./styles/table.css";
 
-const MealTable = () => {
+interface Props {
+  meals: MappedMeal[];
+}
+
+const MealTable = ({ meals }: Props) => {
   return (
     <div id="meal-table" className="container">
       <table>
         <thead>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Area</th>
-          <th>Category</th>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Area</th>
+            <th>Category</th>
+          </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Spaghetti</td>
-            <td>Italian</td>
-            <td>Pasta</td>
-          </tr>
+          {meals.map((meal) => {
+            const { id, image, name, area, category } = meal;
+            return (
+              <tr key={id}>
+                <td>{id}</td>
+                <td className="name-cell">
+                  {image && name && <img src={image} alt={name} />}
+                  {name}
+                </td>
+                <td>{area}</td>
+                <td>{category}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

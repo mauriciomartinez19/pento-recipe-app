@@ -5,7 +5,7 @@ import SearchBox from "./components/SearchBox";
 import { useMeals } from "./hooks/useMeals";
 
 function App() {
-  const { updateName, name } =
+  const { updateName, name, meals, loading } =
     useMeals();
   return (
     <div className="app">
@@ -17,7 +17,8 @@ function App() {
         />
       </div>
       <div className="section-wrapper">
-        <MealTable />
+        {loading && <p>Fetching meals...</p>}
+        {!!meals?.length ? <MealTable meals={meals} /> : <p>No meals to display, please search for a different term.</p>}
       </div>
     </div>
   );
