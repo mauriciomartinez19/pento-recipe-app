@@ -2,11 +2,10 @@ import "./styles/search-box.css";
 
 interface SearchBoxProps {
   fetchData: (name: string) => void;
+  updateFilters(e: React.ChangeEvent<HTMLSelectElement>): void;
 }
 
-const SearchBox = ({
-  fetchData,
-}: SearchBoxProps) => {
+const SearchBox = ({ fetchData, updateFilters }: SearchBoxProps) => {
   return (
     <form id="search-box">
       <div className="input-group">
@@ -21,18 +20,16 @@ const SearchBox = ({
         </div>
         <div className="filters-box">
           <div>Filters:</div>
-          <select
-          >
-            <option disabled value="">
+          <select name="area" defaultValue="" onChange={updateFilters}>
+            <option value="">
               Area
             </option>
             <option value="American">American</option>
             <option value="British">British</option>
             <option value="Canadian">Canadian</option>
           </select>
-          <select
-          >
-            <option value="" disabled>
+          <select name="category" defaultValue="" onChange={updateFilters}>
+            <option value="">
               Category
             </option>
             <option value="Beef">Beef</option>
