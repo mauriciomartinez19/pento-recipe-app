@@ -1,23 +1,40 @@
 import "./styles/search-box.css";
 
-const SearchBox = () => {
+interface SearchBoxProps {
+  updateName: (name: string) => void;
+  name?: string;
+}
+
+const SearchBox = ({
+  updateName,
+  name,
+}: SearchBoxProps) => {
   return (
     <form id="search-box">
       <div className="input-group">
         <div className="search-bar-wrapper">
-          <input />
+          <input
+            value={name}
+            onChange={(e) => {
+              updateName(e.target.value);
+            }}
+            type="text"
+            placeholder="Search by name"
+          />
         </div>
         <div className="filters-box">
           <div>Filters:</div>
-          <select>
-            <option value="" disabled>
+          <select
+          >
+            <option disabled value="">
               Area
             </option>
             <option value="American">American</option>
             <option value="British">British</option>
             <option value="Canadian">Canadian</option>
           </select>
-          <select>
+          <select
+          >
             <option value="" disabled>
               Category
             </option>
