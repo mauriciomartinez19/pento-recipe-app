@@ -5,15 +5,14 @@ import SearchBox from "./components/SearchBox";
 import { useMeals } from "./hooks/useMeals";
 
 function App() {
-  const { updateName, name, meals, loading } =
+  const { fetchData, meals, loading } =
     useMeals();
   return (
     <div className="app">
       <h1 className="title">Pento Receipe App</h1>
       <div className="section-wrapper">
         <SearchBox
-          name={name}
-          updateName={updateName}
+          fetchData={fetchData}
         />
       </div>
       <div className="section-wrapper">
