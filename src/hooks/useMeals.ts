@@ -10,6 +10,7 @@ export const useMeals = () => {
   const [error, setError] = useState<string>();
   useEffect(() => {
     const getMeals = async () => {
+      setLoading(true)
       const response = await Meals.getMeals({ name });
       setMeals(response?.data);
       setError(response?.errorMessage);
@@ -21,7 +22,6 @@ export const useMeals = () => {
   const updateName = (name: string) => {
     setName(name);
   };
-
   return {
     meals,
     loading,
