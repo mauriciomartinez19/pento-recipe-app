@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Meals } from "../api/meals";
-import { Meal } from "../types/meals";
+import { MappedMeal } from "../types/meals";
 
 export const useMeals = () => {
   const [name, setName] = useState<string>("");
   // const [filters, setFilters] = useState<{category: string, area: string}>();
-  const [meals, setMeals] = useState<Meal[]>();
+  const [meals, setMeals] = useState<MappedMeal[]>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>();
   useEffect(() => {

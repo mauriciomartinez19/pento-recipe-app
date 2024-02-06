@@ -17,3 +17,11 @@ export interface Meal {
   strIngredient7:string | null;
   strIngredient8:string | null;
 }
+
+export interface MappedMeal {
+  id:string | null;
+  name:string | null;
+  category:string | null;
+  area:string | null;
+  image:string | null;
+}
