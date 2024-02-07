@@ -1,10 +1,10 @@
 import { MappedMeal } from "../types/meals";
 
 interface Props {
-  meal: MappedMeal
+  meal: MappedMeal;
 }
 
-const TableRow = ({meal}:Props) => {
+const TableRow = ({ meal }: Props) => {
   const { id, image, name, area, category } = meal;
   return (
     <tr>

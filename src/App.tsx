@@ -12,7 +12,7 @@ function App() {
         <SearchBox handleName={handleName} updateFilters={updateFilters} />
       </div>
       <div className="section-wrapper">
-        <MealTable meals={meals} loading={loading} error={error}/>
+        <MealTable meals={meals} loading={loading} error={error} />
       </div>
     </div>
   );

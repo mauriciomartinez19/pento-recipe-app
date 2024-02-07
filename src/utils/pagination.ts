@@ -7,7 +7,7 @@ const getItems = <T>(data: T[], page: number, limit: number = 10) => {
 const getPageNumbers = <T>(data: T[], limit: number = 10) => {
   return Array.from(
     { length: Math.ceil(data.length / limit) },
-    (_, i) => i + 1
+    (_, i) => i + 1,
   );
 };
 
