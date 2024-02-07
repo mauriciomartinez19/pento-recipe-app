@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MealTable from "./components/MealTable";
+import SearchBox from "./components/SearchBox";
+import { useMeals } from "./hooks/useMeals";
 
 function App() {
+  const { handleName, meals, loading, updateFilters, error } = useMeals();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1 className="title">Pento Receipe App</h1>
+      <div className="section-wrapper">
+        <SearchBox handleName={handleName} updateFilters={updateFilters} />
+      </div>
+      <div className="section-wrapper">
+        <MealTable meals={meals} loading={loading} error={error} />
+      </div>
     </div>
   );
 }
