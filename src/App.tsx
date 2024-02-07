@@ -1,5 +1,4 @@
 import "./App.css";
-import "./styles/inputs.css";
 import MealTable from "./components/MealTable";
 import SearchBox from "./components/SearchBox";
 import { useMeals } from "./hooks/useMeals";
