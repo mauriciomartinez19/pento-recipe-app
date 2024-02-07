@@ -1,12 +1,13 @@
+import { ChangeEvent } from "react";
 import { useFilters } from "../hooks/useFilters";
 import "./styles/search-box.css";
 
 interface SearchBoxProps {
-  fetchData: (name: string) => void;
-  updateFilters(e: React.ChangeEvent<HTMLSelectElement>): void;
+  handleName: (e: ChangeEvent<HTMLInputElement>) => void;
+  updateFilters(e: ChangeEvent<HTMLSelectElement>): void;
 }
 
-const SearchBox = ({ fetchData, updateFilters }: SearchBoxProps) => {
+const SearchBox = ({ handleName, updateFilters }: SearchBoxProps) => {
   const { filters, loading, error } = useFilters();
   if (loading) {
     return <p>Fetching filters...</p>;
@@ -19,9 +20,7 @@ const SearchBox = ({ fetchData, updateFilters }: SearchBoxProps) => {
       <div className="input-group">
         <div className="search-bar-wrapper">
           <input
-            onChange={(e) => {
-              fetchData(e.target.value);
-            }}
+            onChange={handleName}
             type="text"
             placeholder="Search by name"
           />
