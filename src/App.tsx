@@ -5,20 +5,15 @@ import SearchBox from "./components/SearchBox";
 import { useMeals } from "./hooks/useMeals";
 
 function App() {
-  const { fetchData, meals, loading, updateFilters } = useMeals();
+  const { fetchData, meals, loading, updateFilters, error } = useMeals();
   return (
     <div className="app">
       <h1 className="title">Pento Receipe App</h1>
       <div className="section-wrapper">
-        <SearchBox fetchData={fetchData} updateFilters={updateFilters}/>
+        <SearchBox fetchData={fetchData} updateFilters={updateFilters} />
       </div>
       <div className="section-wrapper">
-        {loading && <p>Fetching meals...</p>}
-        {!!meals?.length ? (
-          <MealTable meals={meals} />
-        ) : (
-          <p>No meals to display, please search for a different term.</p>
-        )}
+        <MealTable meals={meals} loading={loading} error={error}/>
       </div>
     </div>
   );
