@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { MappedMeal } from "../types/meals";
 import "./styles/table.css";
+import { Pagination } from "../utils/pagination";
 
 interface Props {
   meals: MappedMeal[];
 }
 
 const MealTable = ({ meals }: Props) => {
+  const [page, setPage] = useState(1);
   return (
     <div id="meal-table" className="container">
       <table>
@@ -18,7 +21,7 @@ const MealTable = ({ meals }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {meals.map((meal) => {
+          {Pagination.getItems(meals, page).map((meal) => {
             const { id, image, name, area, category } = meal;
             return (
               <tr key={id}>
@@ -34,6 +37,13 @@ const MealTable = ({ meals }: Props) => {
           })}
         </tbody>
       </table>
+      <div id="pagination">
+        {Pagination.getPageNumbers(meals).map((number) => (
+          <button key={number} onClick={() => setPage(number)}>
+            {number}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
