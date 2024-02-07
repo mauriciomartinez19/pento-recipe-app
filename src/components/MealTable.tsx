@@ -4,14 +4,20 @@ import "./styles/table.css";
 import { Pagination } from "../utils/pagination";
 
 interface Props {
-  meals: MappedMeal[];
+  meals?: MappedMeal[];
+  loading: boolean;
+  error?: string;
 }
 
-const MealTable = ({ meals }: Props) => {
+const MealTable = ({ meals, loading, error }: Props) => {
   const [page, setPage] = useState(1);
+  if (loading) return <p>Fetching meals...</p>;
+  if (error) return <p>{error}</p>;
+  if (!meals?.length)
+    return <p>No meals to display, please search for a different term.</p>;
   return (
     <div id="meal-table">
-      <div  className="wrapper">
+      <div className="wrapper">
         <table>
           <thead>
             <tr>
@@ -41,7 +47,11 @@ const MealTable = ({ meals }: Props) => {
       </div>
       <div id="pagination">
         {Pagination.getPageNumbers(meals).map((number) => (
-          <button key={number} onClick={() => setPage(number)} disabled={page===number}>
+          <button
+            key={number}
+            onClick={() => setPage(number)}
+            disabled={page === number}
+          >
             {number}
           </button>
         ))}
