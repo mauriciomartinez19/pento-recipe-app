@@ -38,6 +38,11 @@
   gap: 20px;
 }
 
+#meal-table .wrapper {
+  min-height: 507px;
+  width: 100%;
+}
+
 #pagination {
   display: flex;
   justify-content: center;
