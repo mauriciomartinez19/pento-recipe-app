@@ -41,7 +41,7 @@ const MealTable = ({ meals }: Props) => {
       </div>
       <div id="pagination">
         {Pagination.getPageNumbers(meals).map((number) => (
-          <button key={number} onClick={() => setPage(number)}>
+          <button key={number} onClick={() => setPage(number)} disabled={page===number}>
             {number}
           </button>
         ))}

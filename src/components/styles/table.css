@@ -58,3 +58,10 @@
   cursor: pointer;
   box-shadow: 0px 7px 5px -5px black;
 }
+
+#pagination button[disabled] {
+  background-color: white;
+  opacity: 1;
+  color: black;
+  cursor: auto;
+}
