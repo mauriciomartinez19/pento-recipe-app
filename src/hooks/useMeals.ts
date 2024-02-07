@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Meals } from "../api/meals";
 import { MappedMeal } from "../types/meals";
 
@@ -37,15 +37,16 @@ export const useMeals = () => {
     };
   }, [name]);
 
-  const fetchData = (name: string) => {
-    setName(name);
+  const handleName = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setName(value);
     if (debounceRef.current) {
       clearTimeout(debounceRef.current);
     }
-    debounceRef.current = setTimeout(() => getMeals(name), 500);
+    debounceRef.current = setTimeout(() => getMeals(value), 500);
   };
 
-  const updateFilters = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const updateFilters = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     const newFilters = { ...filters, [name]: value };
     setFilters(newFilters);
@@ -68,7 +69,7 @@ export const useMeals = () => {
     meals: filterData(),
     loading,
     error,
-    fetchData,
+    handleName,
     filterData,
     updateFilters,
   };

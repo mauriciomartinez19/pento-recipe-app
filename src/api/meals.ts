@@ -12,16 +12,15 @@ const proxy = (meal: Meal): MappedMeal => {
     area: meal.strArea,
     image: meal.strMealThumb,
   };
-}
+};
 
 const getMeals = async ({ name }: getMealsApiProps) => {
-  const url =
-    process.env.REACT_APP_BASE_MEALS_API_URI +`search.php?s=${name}`;
+  const url = process.env.REACT_APP_BASE_MEALS_API_URI + `search.php?s=${name}`;
 
   try {
     const response = await fetch(url);
-    const {meals} = await response.json();
-    return { data: (meals as Meal[]).map((meal)=>proxy(meal)) };
+    const { meals } = await response.json();
+    return { data: (meals as Meal[]).map((meal) => proxy(meal)) };
   } catch (error) {
     console.error(error);
     return { errorMessage: "Error fetching meals. Please try again later." };
