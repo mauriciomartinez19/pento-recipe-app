@@ -1,12 +1,19 @@
+import { useFilters } from "../hooks/useFilters";
 import "./styles/search-box.css";
 
 interface SearchBoxProps {
   fetchData: (name: string) => void;
+  updateFilters(e: React.ChangeEvent<HTMLSelectElement>): void;
 }
 
-const SearchBox = ({
-  fetchData,
-}: SearchBoxProps) => {
+const SearchBox = ({ fetchData, updateFilters }: SearchBoxProps) => {
+  const { filters, loading, error } = useFilters();
+  if (loading) {
+    return <p>Fetching filters...</p>;
+  }
+  if (!!error) {
+    return <p>{error}</p>;
+  }
   return (
     <form id="search-box">
       <div className="input-group">
@@ -21,23 +28,25 @@ const SearchBox = ({
         </div>
         <div className="filters-box">
           <div>Filters:</div>
-          <select
-          >
-            <option disabled value="">
-              Area
-            </option>
-            <option value="American">American</option>
-            <option value="British">British</option>
-            <option value="Canadian">Canadian</option>
+          <select name="area" defaultValue="" onChange={updateFilters}>
+            <option value="">Area</option>
+            {filters?.areas.map((area) => {
+              return (
+                <option key={area} value={area}>
+                  {area}
+                </option>
+              );
+            })}
           </select>
-          <select
-          >
-            <option value="" disabled>
-              Category
-            </option>
-            <option value="Beef">Beef</option>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Dessert">Dessert</option>
+          <select name="category" defaultValue="" onChange={updateFilters}>
+            <option value="">Category</option>
+            {filters?.categories.map((category) => {
+              return (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>
