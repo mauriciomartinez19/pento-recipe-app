@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MappedMeal } from "../types/meals";
 import "./styles/table.css";
 import { Pagination } from "../utils/pagination";
+import TableRow from "./TableRow";
 
 interface Props {
   meals?: MappedMeal[];
@@ -28,20 +29,9 @@ const MealTable = ({ meals, loading, error }: Props) => {
             </tr>
           </thead>
           <tbody>
-            {Pagination.getItems(meals, page).map((meal) => {
-              const { id, image, name, area, category } = meal;
-              return (
-                <tr key={id}>
-                  <td>{id}</td>
-                  <td className="name-cell">
-                    {image && name && <img src={image} alt={name} />}
-                    {name}
-                  </td>
-                  <td>{area}</td>
-                  <td>{category}</td>
-                </tr>
-              );
-            })}
+            {Pagination.getItems(meals, page).map((meal) => (
+              <TableRow meal={meal} key={meal.id} />
+            ))}
           </tbody>
         </table>
       </div>
