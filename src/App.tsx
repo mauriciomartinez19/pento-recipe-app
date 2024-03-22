@@ -7,7 +7,7 @@ function App() {
   const { handleName, meals, loading, updateFilters, error } = useMeals();
   return (
     <div className="app">
-      <h1 className="title">Pento Receipe App</h1>
+      <h1 className="title">CI CD testing app</h1>
       <div className="section-wrapper">
         <SearchBox handleName={handleName} updateFilters={updateFilters} />
       </div>
